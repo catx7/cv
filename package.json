@@ -1,0 +1,14 @@
+{
+  "name": "linkedin-lead-finder",
+  "private": true,
+  "scripts": {
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "dev:scanner": "cd scanner && source .venv/bin/activate && uvicorn app.main:app --reload --port 8001",
+    "db:generate": "cd server && npx drizzle-kit generate",
+    "db:migrate": "cd server && npx tsx src/db/migrate.ts",
+    "db:studio": "cd server && npx drizzle-kit studio",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down"
+  }
+}

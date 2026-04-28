@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: lead_finder_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: lead_finder
+      POSTGRES_USER: lead_finder
+      POSTGRES_PASSWORD: lead_finder_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lead_finder -d lead_finder"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
